@@ -19,7 +19,10 @@ text = st.text_area("Введите текст")
 
 if st.button("Проверить"):
     if text:
-        result = analyze_text(classifier, text)
-        st.write(result)
+        try:
+            result = analyze_text(classifier, text)
+            st.write(result)
+        except Exception as e:
+            st.error(f"Ошибка: {e}")
     else:
         st.warning("Введите текст")
