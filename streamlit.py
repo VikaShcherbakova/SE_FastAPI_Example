@@ -3,7 +3,13 @@ from transformers import pipeline
 
 st.title("Sentiment Analysis App")
 
-classifier = pipeline("sentiment-analysis")
+
+@st.cache_resource
+def load_model():
+    return pipeline("sentiment-analysis")
+
+
+classifier = load_model()
 
 text = st.text_area("Введите текст")
 
